@@ -44,11 +44,11 @@ public class UserResource {
 	 */
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		return ResponseEntity.ok().body(this.userService.findAll());
+		return ResponseEntity.ok(this.userService.findAll());
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
-		return ResponseEntity.ok().body(this.userService.findById(id));
+		return ResponseEntity.ok(this.userService.findById(id));
 	}
 }
