@@ -1,8 +1,10 @@
 package com.joaobertholino.udemyspringproject.config;
 
+import com.joaobertholino.udemyspringproject.entities.Category;
 import com.joaobertholino.udemyspringproject.entities.Order;
 import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.entities.enums.OrderStatus;
+import com.joaobertholino.udemyspringproject.repositories.CategoryRepository;
 import com.joaobertholino.udemyspringproject.repositories.OrderRepository;
 import com.joaobertholino.udemyspringproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,17 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private OrderRepository orderRepository;
 
+	@Autowired
+	private CategoryRepository categoryRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
+		Category c1 = new Category("Electronics");
+		Category c2 = new Category("Books");
+		Category c3 = new Category("Computers");
+
+		this.categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
+
 		User u1 = new User("Joao", "joao@gmail.com", "99999999999", "98989898");
 		User u2 = new User("Ellen", "ellen@gmail.com", "88888888888", "76767676");
 
