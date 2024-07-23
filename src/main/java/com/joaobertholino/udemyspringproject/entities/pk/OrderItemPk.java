@@ -1,5 +1,6 @@
 package com.joaobertholino.udemyspringproject.entities.pk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joaobertholino.udemyspringproject.entities.Order;
 import com.joaobertholino.udemyspringproject.entities.Product;
 import jakarta.persistence.Embeddable;
@@ -19,6 +20,7 @@ public class OrderItemPk implements Serializable {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
+	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}
