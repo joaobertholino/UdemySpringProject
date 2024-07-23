@@ -55,7 +55,11 @@ public class TestConfig implements CommandLineRunner {
 
 		User u1 = new User("Joao", "joao@gmail.com", "99999999999", "98989898");
 		User u2 = new User("Ellen", "ellen@gmail.com", "88888888888", "76767676");
-		this.userRepository.saveAll(Arrays.asList(u1, u2));
+		User u3 = new User("Nicolas", "nicolas@gmail.com", "88888888888", "76767676");
+		User u4 = new User("Lucas", "lucas@gmail.com", "88888888888", "76767676");
+		User u5 = new User("Irineu", "irineu@gmail.com", "88888888888", "76767676");
+		User u6 = new User("Carlos", "carlos@gmail.com", "88888888888", "76767676");
+		this.userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5, u6));
 
 		Order o1 = new Order(Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
