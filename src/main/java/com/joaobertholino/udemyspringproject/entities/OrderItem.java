@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
 
+	@JsonIgnore
 	@EmbeddedId
 	private OrderItemPk id = new OrderItemPk();
 	private Integer quantity;
