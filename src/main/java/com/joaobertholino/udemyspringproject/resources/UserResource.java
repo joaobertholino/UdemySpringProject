@@ -60,4 +60,10 @@ public class UserResource {
 		UriComponents components = builder.buildAndExpand(userInserted.getId());
 		return ResponseEntity.created(components.toUri()).body(userInserted);
 	}
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+		this.userService.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
 }
