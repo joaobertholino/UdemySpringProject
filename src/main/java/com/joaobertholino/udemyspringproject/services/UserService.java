@@ -22,4 +22,8 @@ public class UserService {
 		Optional<User> result = this.userRepository.findById(id);
 		return result.orElseThrow();
 	}
+
+	public User insert(User user) {
+		return this.userRepository.save(user);
+	}
 }

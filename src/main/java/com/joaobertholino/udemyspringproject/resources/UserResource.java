@@ -4,11 +4,12 @@ import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -50,5 +51,13 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		return ResponseEntity.ok(this.userService.findById(id));
+	}
+
+	@PostMapping
+	public ResponseEntity<User> insert(@RequestBody User user) {
+		User userInserted = this.userService.insert(user);
+		UriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}");
+		UriComponents components = builder.buildAndExpand(userInserted.getId());
+		return ResponseEntity.created(components.toUri()).body(userInserted);
 	}
 }
