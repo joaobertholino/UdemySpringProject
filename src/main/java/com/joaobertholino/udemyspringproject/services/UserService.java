@@ -40,14 +40,14 @@ public class UserService {
 	}
 
 	public User updateById(Long id, User user) {
-		User entity = this.userRepository.getReferenceById(id);
+		User entity = this.userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 		updateData(entity, user);
 		return this.userRepository.save(entity);
 	}
 
 	private void updateData(User entity, User user) {
-		entity.setName(user.getName());
-		entity.setEmail(user.getEmail());
-		entity.setPhone(user.getPhone());
+		if (user.getName() != null) entity.setName(user.getName());
+		if (user.getEmail() != null) entity.setEmail(user.getEmail());
+		if (user.getPhone() != null) entity.setPhone(user.getPhone());
 	}
 }
