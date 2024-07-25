@@ -1,5 +1,6 @@
 package com.joaobertholino.udemyspringproject.resources.exceptions;
 
+import com.joaobertholino.udemyspringproject.services.exceptions.DatabaseIntegrityException;
 import com.joaobertholino.udemyspringproject.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,14 @@ public class ResourceExceptionHandler {
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
 		String errorTitle = "Resource not found";
 		HttpStatus status = HttpStatus.NOT_FOUND;
+		StandardError standardError = new StandardError(Instant.now(), status.value(), errorTitle, e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(standardError);
+	}
+
+	@ExceptionHandler(DatabaseIntegrityException.class)
+	public ResponseEntity<StandardError> databaseIntegrityError(DatabaseIntegrityException e, HttpServletRequest request) {
+		String errorTitle = "Database integrity error";
+		HttpStatus status = HttpStatus.CONFLICT;
 		StandardError standardError = new StandardError(Instant.now(), status.value(), errorTitle, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(standardError);
 	}

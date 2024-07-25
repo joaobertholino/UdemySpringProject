@@ -2,8 +2,10 @@ package com.joaobertholino.udemyspringproject.services;
 
 import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.repositories.UserRepository;
+import com.joaobertholino.udemyspringproject.services.exceptions.DatabaseIntegrityException;
 import com.joaobertholino.udemyspringproject.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +32,11 @@ public class UserService {
 
 	public void deleteById(Long id) {
 		this.userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-		this.userRepository.deleteById(id);
+		try {
+			this.userRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseIntegrityException(id);
+		}
 	}
 
 	public User updateById(Long id, User user) {
