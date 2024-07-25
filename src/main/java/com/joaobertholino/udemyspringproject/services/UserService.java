@@ -2,6 +2,7 @@ package com.joaobertholino.udemyspringproject.services;
 
 import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.repositories.UserRepository;
+import com.joaobertholino.udemyspringproject.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> result = this.userRepository.findById(id);
-		return result.orElseThrow();
+		return result.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public User insert(User user) {
@@ -28,6 +29,7 @@ public class UserService {
 	}
 
 	public void deleteById(Long id) {
+		this.userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 		this.userRepository.deleteById(id);
 	}
 
