@@ -3,7 +3,6 @@ package com.joaobertholino.udemyspringproject.config;
 import com.joaobertholino.udemyspringproject.entities.*;
 import com.joaobertholino.udemyspringproject.entities.enums.OrderStatus;
 import com.joaobertholino.udemyspringproject.repositories.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

@@ -2,7 +2,6 @@ package com.joaobertholino.udemyspringproject.resources;
 
 import com.joaobertholino.udemyspringproject.entities.Product;
 import com.joaobertholino.udemyspringproject.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

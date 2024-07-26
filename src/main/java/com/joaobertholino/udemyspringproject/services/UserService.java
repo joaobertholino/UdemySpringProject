@@ -4,7 +4,6 @@ import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.repositories.UserRepository;
 import com.joaobertholino.udemyspringproject.services.exceptions.DatabaseIntegrityException;
 import com.joaobertholino.udemyspringproject.services.exceptions.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 

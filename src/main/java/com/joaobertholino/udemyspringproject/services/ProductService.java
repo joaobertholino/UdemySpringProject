@@ -2,7 +2,6 @@ package com.joaobertholino.udemyspringproject.services;
 
 import com.joaobertholino.udemyspringproject.entities.Product;
 import com.joaobertholino.udemyspringproject.repositories.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
