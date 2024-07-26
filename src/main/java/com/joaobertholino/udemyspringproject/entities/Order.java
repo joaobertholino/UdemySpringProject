@@ -13,22 +13,17 @@ import java.util.Set;
 @Table(name = "tb_order")
 public class Order implements Serializable {
 
+	@OneToMany(mappedBy = "id.order")
+	private final Set<OrderItem> items = new HashSet<>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
-
 	private Integer orderStatus;
-
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private User client;
-
-	@OneToMany(mappedBy = "id.order")
-	private final Set<OrderItem> items = new HashSet<>();
-
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
 
