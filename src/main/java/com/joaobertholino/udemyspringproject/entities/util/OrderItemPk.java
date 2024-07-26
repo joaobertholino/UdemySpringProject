@@ -1,4 +1,4 @@
-package com.joaobertholino.udemyspringproject.entities.pk;
+package com.joaobertholino.udemyspringproject.entities.util;
 
 import com.joaobertholino.udemyspringproject.entities.Order;
 import com.joaobertholino.udemyspringproject.entities.Product;
