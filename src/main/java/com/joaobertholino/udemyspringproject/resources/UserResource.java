@@ -2,7 +2,6 @@ package com.joaobertholino.udemyspringproject.resources;
 
 import com.joaobertholino.udemyspringproject.entities.User;
 import com.joaobertholino.udemyspringproject.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

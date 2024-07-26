@@ -18,7 +18,7 @@ public enum OrderStatus {
 	}
 
 	public static OrderStatus valueOf(int code) throws IllegalArgumentException {
-		for(OrderStatus status : OrderStatus.values()) {
+		for (OrderStatus status : OrderStatus.values()) {
 			if (status.getCode() == code) {
 				return status;
 			}

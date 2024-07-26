@@ -11,14 +11,13 @@ import java.util.Set;
 @Table(name = "tb_category")
 public class Category implements Serializable {
 
+	@JsonIgnore
+	@ManyToMany(mappedBy = "categories")
+	private final Set<Product> products = new HashSet<>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-
-	@JsonIgnore
-	@ManyToMany(mappedBy = "categories")
-	private final Set<Product> products = new HashSet<>();
 
 	public Category() {
 	}
