@@ -15,8 +15,11 @@ import java.util.List;
 @RequestMapping(path = "/products")
 public class ProductResource {
 
-	@Autowired
-	private ProductService productService;
+	private final ProductService productService;
+
+	public ProductResource(ProductService productService) {
+		this.productService = productService;
+	}
 
 	@GetMapping
 	public ResponseEntity<List<Product>> findAll() {

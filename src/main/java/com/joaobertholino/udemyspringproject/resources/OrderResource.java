@@ -15,8 +15,11 @@ import java.util.List;
 @RequestMapping(path = "/orders")
 public class OrderResource {
 
-	@Autowired
-	private OrderService orderService;
+	private final OrderService orderService;
+
+	public OrderResource(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	@GetMapping
 	public ResponseEntity<List<Order>> findAll() {
